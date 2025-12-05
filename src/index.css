@@ -1,6 +1,11 @@
 @import "tailwindcss";
-
+*{
+  font-family:Poppins, sans-serif ;
+}
 @theme {
   --font-poppins: Poppins, sans-serif;
   --font-inter: Inter, sans-serif;
+}
+body{
+  background-color: rgb(213, 232, 255);
 }
