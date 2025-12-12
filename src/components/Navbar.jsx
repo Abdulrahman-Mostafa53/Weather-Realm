@@ -36,30 +36,32 @@ export const Navbar = ({ timeZone }) => {
 
   return (
     <>
-      <nav className="h-20 flex justify-between container mx-auto">
-        <div className="flex items-center flex-1">
-          <div className="h-14 w-14 flex items-center justify-center mr-2 md:mr-4">
-            <img src={logo} alt="logo.png" />
+      <nav className="h-24 items-center bg-gray-500/20 absolute w-full z-20 flex justify-center">
+        <div className=" flex justify-between container">
+          <div className="flex items-center flex-1">
+            <div className="h-14 w-14 flex items-center justify-center mr-2 md:mr-4">
+              <img src={logo} alt="logo.png" />
+            </div>
+            <Search onInputChange={handleInputChange}/>
           </div>
-          <Search onInputChange={handleInputChange}/>
-        </div>
-        <div className="flex items-center gap-4">
-          <DateInfo timeZone={timeZone}/>
-          {currentRoute === 0 ? (
-            <IoMdSettings
-              className={iconStyle}
-              onClick={() => {
-                handleClick();
-              }}
-            />
-          ) : (
-            <TiHome
-              className={iconStyle}
-              onClick={() => {
-                handleClick();
-              }}
-            />
-          )}
+          <div className="flex items-center gap-4">
+            <DateInfo timeZone={timeZone}/>
+            {currentRoute === 0 ? (
+              <IoMdSettings
+                className={iconStyle}
+                onClick={() => {
+                  handleClick();
+                }}
+              />
+            ) : (
+              <TiHome
+                className={iconStyle}
+                onClick={() => {
+                  handleClick();
+                }}
+              />
+            )}
+          </div>
         </div>
       </nav>
       {searchInput.length>0?<SearchOptions searchQuery={searchInput}/>:null}

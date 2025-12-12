@@ -7,7 +7,7 @@ export const SearchOptions = ({ searchQuery }) => {
     async function loadData() {
       try {
         const response = await fetch(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery}&count=10&language=en&format=json`
+          `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery}&count=5&language=en&format=json`
         );
         if (!response.ok) {
           throw Error("baddd naiaaa");
@@ -35,11 +35,11 @@ export const SearchOptions = ({ searchQuery }) => {
   }, [searchQuery]);
   console.log(data);
   return (
-    <div className="bg-blue-200/45 container absolute left-1/2 -translate-x-1/2 max-w-4xl p-6 rounded-xl shadow-md shadow-blue-500/80 backdrop-blur-2xl">
+    <div className="bg-blue-200/20 z-50 container absolute left-1/2 -translate-x-1/2 max-w-4xl p-6 rounded-xl shadow-md shadow-blue-500/80 backdrop-blur-2xl mt-[100px]">
       {!data ? <p>Results not found</p> : 
-      <ul className="border-gray-300 border-2 rounded-2xl overflow-hidden">
+      <ul className="border-gray-500 border rounded-2xl overflow-hidden">
         {data.map((lo,index)=>{
-          return (<li className={`flex gap-5 items-center p-5 ${index===data.length-1?"":"border-b-2"} border-gray-300 bg-gray-200 hover:bg-gray-300 transition-all`}>
+          return (<li className={`flex gap-5 items-center p-5 bg-gray-500/30 backdrop-blur-xl ${index===data.length-1?"":"border-b"} border-gray-500  hover:bg-gray-300/30 transition-all`}>
             <CircleFlag countryCode={lo["country_code"].toLowerCase()} width="35"/>
             <p>{lo["name"]}</p>
           </li>)
