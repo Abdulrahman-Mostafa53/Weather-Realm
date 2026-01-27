@@ -1,7 +1,10 @@
-
+#root{
+  touch-action:pan-x pan-y;
+  position: relative;
+}
 @import "tailwindcss";
 *{
-  font-family:Poppins, sans-serif ;
+  font-family:Poppins, sans-serif;
 }
 @theme {
   --font-poppins: Poppins, sans-serif;

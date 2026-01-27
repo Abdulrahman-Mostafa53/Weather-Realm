@@ -13,12 +13,7 @@ export function Moon(props) {
   const group = useRef();
   const moon = useRef();
   const { nodes, materials, animations } = useGLTF("/moon.glb");
-  const tetxures = useTexture({
-    map: base,
-    emissiveMap: emission,
-    normalMap: normal,
-  });
-
+  
   rotateToMouse(moon);
   const { actions } = useAnimations(animations, group);
   useEffect(() => {

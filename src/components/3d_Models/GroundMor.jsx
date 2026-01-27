@@ -6,8 +6,6 @@ Command: npx gltfjsx@6.5.3 ground.glb
 import React from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useEffect } from "react";
-import { Group } from "three";
-import { degToRad } from "three/src/math/MathUtils";
 
 export function Ground(props) {
   const group = React.useRef();
@@ -75,15 +73,6 @@ export function Ground(props) {
         position={[2, 3, 1]}
       />
       <group name="Scene">
-        <mesh
-          name="Plane"
-          castShadow
-          receiveShadow
-          geometry={nodes.Plane.geometry}
-          material={materials.sky}
-          position={[0, -3.839, 6.578]}
-          scale={[84.993, 11.842, 11.842]}
-        />
         <group
           name="Empty"
           position={[-9.532, 5, 2.304]}

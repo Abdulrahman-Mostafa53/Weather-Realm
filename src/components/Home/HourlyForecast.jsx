@@ -1,36 +1,32 @@
-import React from "react";
-import pa from "../../assets/images/WeatherConIcons/RainThunder.svg";
+import React, {useState} from "react";
+import getIcon from "../../utils/iconCodeMap";
+import { Swipe } from "./swipe";
 
-export const HourlyForecast = () => {
-  const fake = [
-    { temp: "15" },
-    { temp: "15" },
-    { temp: "15" },
-    { temp: "15" },
-    { temp: "15" },
-    { temp: "15" },
-    { temp: "15" },
-  ];
+export const HourlyForecast = ({ currentHour, temp, time, code }) => {
+  const startDate = new Date(currentHour);
+  const [current, setCurrent] = useState(startDate.getHours());
+  const tempunit = JSON.parse(localStorage.getItem("tempunit"))
+  const timeunit = JSON.parse(localStorage.getItem("timeunit"))
   return (
-    <div className="bg-gray-800/30 flex backdrop-blur-sm border shadow-md shadow-gray-700/70 border-gray-400/45 rounded-2xl container ">
-      <p className="py-10 border-r px-7  text-gray-100  border-gray-500/40 font-semibold tracking-wider flex items-center">
-        Hourly Forecast
-      </p>
-      <ul className="max-h-96 overflow-hidden flex flex-1">
-        {fake.map((hour, index) => {
-          return (
-            <li className="px-8 border-r flex-1 border-gray-500/40 flex flex-col items-center justify-center">
-              <p className="text-xl text-gray-50 font-semibold mb-1.5 text-nowrap">
-                {index + 1} PM
-              </p>
-              <p className=" text-xl text-gray-200 items-center flex gap-3.5">
-                {hour["temp"]}°C
-                <img src={pa} alt="" className="w-10" />
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <Swipe title={"Hourly Forecast"} current={current} setCurrent={setCurrent} first={startDate.getHours()} len={time.length}>
+      {(cur,index) => {
+        const currentDate = new Date(time[cur])
+        const hour = currentDate.getHours()
+        const day = currentDate.getDate()
+        const timeFormated= currentDate.toLocaleDateString('en-US',{hour:"2-digit",hour12:timeunit}).split(", ")[1]
+        return(
+        <li className="border-r flex-1 border-gray-500/40 flex flex-col items-center justify-center">
+          <p className="text-md md:text-xl text-gray-50 font-semibold mb-1.5 text-nowrap">
+            {hour === startDate.getHours() && day === startDate.getDate()
+              ? "now"
+              : timeFormated}
+          </p>
+          <p className=" md:text-xl text-gray-200 flex items-center gap-1 md:gap-3.5">
+            {temp[cur]}{tempunit==="C"?" °C":" °F"}
+            <img src={getIcon(code[cur])} alt="" className="w-8 md:w-10" />
+          </p>
+        </li>)
+      }}
+    </Swipe>
   );
 };
