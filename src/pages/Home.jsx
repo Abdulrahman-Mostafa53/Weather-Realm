@@ -1,5 +1,5 @@
 import { HourlyForecast } from "../components/Home/HourlyForecast";
-import { CurrentWeather } from "../components/Home/currentWeather";
+import { CurrentWeather } from "../components/Home/CurrentWeather";
 import { DailyForecast } from "../components/Home/DailyForecast";
 import { Canvas } from "@react-three/fiber";
 import { Ground } from "../components/3d_Models/GroundMor";
