@@ -1,5 +1,7 @@
 # 🌦️ Weather Realm
 
+**[Live Demo](https://weatherealm.netlify.app/)**
+
 A fun 3D project I built while learning **React**. Instead of a boring table of numbers, I wanted to see if I could make the weather actually look "eye-appealing" using low-poly models.
 
 ## ✨ The Vibe
@@ -28,6 +30,6 @@ Figuring out how to make React talk to the **Open-Meteo API** and then using tha
 ---
 
 ### 🚀 Run it Locally
-1. Clone the repo: `git clone https://github.com/Abdulrahman-Mostafa53/Weather-Realm`
+1. Clone the repo: `git clone https://github.com/Abdulrahman-Mostafa53/Weather-Realm.git`
 2. Install dependencies: `npm install`
 3. Start the dev server: `npm run dev`

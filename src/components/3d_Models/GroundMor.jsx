@@ -20,57 +20,23 @@ export function Ground(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <directionalLight
-        intensity={1}
+        intensity={10}
         color={"94FFFF"}
         position={[-15, 200, -1000]}
       />
       <pointLight
-        intensity={20}
+        intensity={500}
         decay={2}
         distance={10}
         color={"#66ebff"}
-        position={[-1, 2, -3]}
+        position={[-1, 2, -5]}
       />
       <pointLight
-        intensity={30}
-        decay={2}
-        distance={10}
-        color={"yellow"}
-        position={[-1, 2, -3]}
-      />
-      <pointLight
-        intensity={100}
-        distance={4}
-        color={"orange"}
-        position={[0, 5, 3]}
-      />
-      <pointLight
-        intensity={3}
+        intensity={5}
         decay={2}
         distance={90}
         color={"#ffea00"}
         position={[0, 1, 0]}
-      />
-      <pointLight
-        intensity={20}
-        decay={5}
-        distance={3}
-        color={"white"}
-        position={[-2, 3.5, 1]}
-      />
-      <pointLight
-        intensity={100}
-        decay={3}
-        distance={100}
-        color={"orange"}
-        position={[0, 5, -1]}
-      />
-      <pointLight
-        intensity={25}
-        decay={4}
-        distance={5}
-        color={"orange"}
-        position={[2, 3, 1]}
       />
       <group name="Scene">
         <group

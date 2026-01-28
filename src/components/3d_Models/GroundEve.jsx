@@ -17,15 +17,12 @@ export function GroundEve(props) {
   }, [actions]);
   return (
     <group ref={group} {...props} dispose={null}>
-        <pointLight intensity={20} color={"#ffd675"} position={[1,1,1]} distance={0.9} decay={3}/>
-        <pointLight intensity={25} color={"#ffd675"}  position={[-1.8,1,1]} distance={0.9} decay={2}/>
-        <pointLight intensity={55} color={"#ffd675"} position={[-0,1.1,-0.9]} distance={0.83} decay={3}/>
-        <pointLight intensity={5} color={"#ffd675"} position={[-0.85,0.5,-1]} distance={0.75} decay={3}/>
-        <pointLight intensity={55} color={"#ffd675"} position={[0.8,1,-1.5]} distance={0.75} decay={3}/>
-        <pointLight intensity={150} color={"#e8baff"} position={[-0.5,1,-4.5]} distance={100} decay={3}/>
-        <pointLight intensity={50} color={"#ffde9c"} position={[-0,2,6]} distance={100} decay={2}/>
-        <pointLight intensity={50} color={"#e8baff"} position={[-0,3,3]} distance={100} decay={2}/>
-        <pointLight intensity={30} color={"#e8baff"} position={[-0,2,-1]} distance={10} decay={4}/>
+        <pointLight intensity={40} color={"#ffd675"} position={[1,1,1]} distance={0.9} decay={3}/>
+        <pointLight intensity={45} color={"#ffd675"}  position={[-1.8,1,1]} distance={0.9} decay={2}/>
+        <pointLight intensity={20} color={"#e8baff"} position={[-0,1.1,-0.8]} distance={2} decay={1}/>
+        <pointLight intensity={10} color={"#ffd675"} position={[-0.85,0.5,-1]} distance={0.75} decay={3}/>
+        <pointLight intensity={10} color={"#ffd675"} position={[0.8,1,-1.5]} distance={0.75} decay={3}/>
+
       <group name="Scene">
         <mesh
           name="Mball005"

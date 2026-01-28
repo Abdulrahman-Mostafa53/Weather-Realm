@@ -48,7 +48,7 @@ export function Sun(props) {
             morphTargetDictionary={nodes.Cylinder001_1.morphTargetDictionary}
             morphTargetInfluences={nodes.Cylinder001_1.morphTargetInfluences}
           />
-            <pointLight intensity={5} color={"#ff5e00"}  decay={2} distance={2} position={[0,3,0]}/>
+            <pointLight intensity={10} color={"#ff5e00"}  decay={2} distance={2} position={[0,3,0]}/>
         </group>
       </group>
     </group>

@@ -10,42 +10,49 @@ import { GroundEve } from "../components/3d_Models/GroundEve";
 import { useLoaderData } from "react-router";
 import { PLaneM } from "../components/3d_Models/planeM";
 import { PlaneE } from "../components/3d_Models/PlaneE";
+import { Environment, PerformanceMonitor } from "@react-three/drei";
+import { useState } from "react";
 
 export const Home = () => {
+  const [dpr, setDpr] = useState(2);
   const data = useLoaderData();
   const { daily, current, hourly } = data;
   return (
     <>
       <div className="absolute w-full h-full">
         <Canvas
-          shadows
+          dpr={0.1}
           camera={{
             position: [0, 2, 10],
             rotation: [degToRad(0), degToRad(0), degToRad(0)],
             fov: 60,
           }}
         >
-          <ambientLight intensity={1.4} color="#ADE8FF" />
+          <Environment preset="night" />
+          <ambientLight intensity={3} color="#ADE8FF" />
           {current["is_day"] === 1 ? <PLaneM /> : <PlaneE />}
         </Canvas>
       </div>
       <div className="absolute left-1/2 -translate-x-1/2  -top-8 xl:top-1/2 w-full h-[80%] xl:-translate-y-1/2 xl:w-full xl:h-full">
         <Canvas
-          shadows
+          dpr={dpr}
           camera={{
             position: [0, 2, 10],
             rotation: [degToRad(0), degToRad(0), degToRad(0)],
             fov: 60,
           }}
         >
-          <ambientLight intensity={1.4} color="#ADE8FF" />
+          <PerformanceMonitor onDecline={()=>{setDpr(1)}}/>
+          <ambientLight intensity={1.2} color="#ADE8FF" />
           {current["is_day"] === 1 ? (
             <>
+              <Environment preset="city" />
               <Ground />
               <Sun />
             </>
           ) : (
             <>
+            <Environment preset="city"  environmentIntensity={0.7}/>
               <GroundEve />
               <Moon />
             </>
@@ -86,7 +93,7 @@ export const getWeather = async function ({ request }) {
   const searchParams = url["searchParams"];
   try {
     const current = JSON.parse(localStorage.getItem("current"));
-    const tempunit = JSON.parse(localStorage.getItem("tempunit"))
+    const tempunit = JSON.parse(localStorage.getItem("tempunit"));
     const res = await fetch(
       searchParams.size > 0
         ? `https://api.open-meteo.com/v1/forecast?latitude=${searchParams.get(
@@ -97,7 +104,7 @@ export const getWeather = async function ({ request }) {
             searchParams.get("timezone")
               ? `&timezone=${searchParams.get("timezone")}`
               : ""
-          }${tempunit==="F"?'&temperature_unit=fahrenheit':''}`
+          }${tempunit === "F" ? "&temperature_unit=fahrenheit" : ""}`
         : `https://api.open-meteo.com/v1/forecast?latitude=${
             current["lat"]
           }&longitude=${
